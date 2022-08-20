@@ -6,6 +6,7 @@ import profile from '@images/profile.jpg';
 import MyList from '@components/List';
 import axios from 'axios';
 import { useState } from 'react';
+import { Button } from 'antd';
 
 const URL = "https://api.unsplash.com";
 const token = "Fn3CLKGW-jNbFkcClpglh7O6E4g7TkqO1jaE7Di2TmM"
@@ -89,7 +90,7 @@ const ProfileContainer = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	> div:first-child {
-		width: 550px;
+		width: 600px;
 		>:first-child{
 			margin-bottom: 15px;
 		}
@@ -116,7 +117,10 @@ function App() {
 		<Container>
 			<ProfileContainer>
 				<div>
-					<h1>프론트엔드 개발자 최한솔입니다.</h1>
+					<div style={{display: 'flex', gap: '10px'}}>
+						<h1>프론트엔드 개발자 최한솔입니다.</h1>
+						<Button type="primary" onClick={()=>window.location.replace('/contact')}>Contact</Button>
+					</div>
 					<p>안녕하세요, 프론트엔드 개발자 최한솔입니다.</p>
 					<p>2년 차 개발자로 스타트업에서 프론트엔드 직무를 맡아 왔습니다. React 프레임워크를 통해
 					홈페이지 퍼블리싱 및 개발 해본 경험이 있습니다.
