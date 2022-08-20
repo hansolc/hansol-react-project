@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.less';
 import { createGlobalStyle } from 'styled-components';
 import styled from 'styled-components';
 import profile from '@images/profile.jpg';
+import MyList from '@components/List';
+import axios from 'axios';
+import { useState } from 'react';
+
+const URL = "https://api.unsplash.com";
+const token = "Fn3CLKGW-jNbFkcClpglh7O6E4g7TkqO1jaE7Di2TmM"
 
 const GlobalStyle = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -97,6 +103,13 @@ const ProfileContainer = styled.div`
 `
 
 function App() {
+	const [image, setImage] = useState<any>("")
+	useEffect(() => {
+		axios.get(`${URL}/photos/random?client_id=${token}`).then(res => {
+			setImage(res.data.urls.small)
+		})
+	},[])
+
     return (
         <>
 		<GlobalStyle></GlobalStyle>
@@ -111,8 +124,9 @@ function App() {
 					니다. 팀원들과의 투명성 있는 소통을 원하며, 도움을 주고 도움을 받을 수 있는 사람이 되고
 					싶습니다</p>
 				</div>
-				<img src={profile} alt="profileImg" />
+				<img src={image} alt="profileImg" width="300px" />
 			</ProfileContainer>
+			<MyList></MyList>
 		</Container>
         </>
     );
