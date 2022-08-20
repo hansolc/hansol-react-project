@@ -3,7 +3,6 @@ import './App.less';
 import { createGlobalStyle } from 'styled-components';
 import styled from 'styled-components';
 import profile from '@images/profile.jpg';
-import { Button } from 'antd';
 
 const GlobalStyle = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/ 
